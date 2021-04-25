@@ -1,7 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Question5
 {
+  private static boolean add;
+
   public static void main(String[] args)
   {
     /**
@@ -27,6 +31,37 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+    //System.out.println("Enter number:");
+    int num = in.nextInt();
+
+    List<Integer> numList = new ArrayList<Integer>();
+    List<Integer> modeList = new ArrayList<Integer>();
+
+
+    for(int i = 0;i < num; i++){
+      int newNum = in.nextInt();
+      numList.add(newNum);
+    }
+
+    modeList.add(numList.get(0));
+    modeList.add(0);
+
+    for (int i : numList){
+      int count = 0;
+      
+      for (int x : numList){
+        if (x == i){
+          count ++;
+        }
+      }
+
+      if (count > modeList.get(1)){
+        modeList.set(0, i);
+        modeList.set(1, count);
+      }
+      else{continue;}
+    }    
+
+    System.out.println(modeList.get(0));
   }
 }
